@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "888241259450",
+    "project_id": "supercell-687be",
+    "storage_bucket": "supercell-687be.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:888241259450:android:d00d39e8f63921fa241383",
+        "android_client_info": {
+          "package_name": "com.kengkokowa.supercell"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "888241259450-7v86cn7bjnc12c7g22fdv81jdvktlraf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kengkokowa.supercell",
+            "certificate_hash": "d9b3eb788d3a4c2becd7229c74ac83f80d9bc670"
+          }
+        },
+        {
+          "client_id": "888241259450-t3l4om4plrhibnkd31t7ovh81a4j0r6j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8g_io9NKYhZuA8fg2qGz58P3c9uQ91fk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "888241259450-t3l4om4plrhibnkd31t7ovh81a4j0r6j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
