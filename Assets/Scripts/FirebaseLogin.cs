@@ -1,10 +1,11 @@
-﻿using Firebase;
-using Firebase.Auth;
-using Google;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Firebase;
+using Firebase.Auth;
+using Firebase.Extensions;
+using Google;
 using TMPro;
 using UnityEngine;
 
@@ -21,12 +22,13 @@ public class FirebaseLogin : MonoBehaviour
 
     string webClientId = "888241259450-t3l4om4plrhibnkd31t7ovh81a4j0r6j.apps.googleusercontent.com";
     private GoogleSignInConfiguration configuration;
+
     private void Awake()
     {
         configuration = new GoogleSignInConfiguration { WebClientId = webClientId, RequestEmail = true, RequestIdToken = true };
     }
 
-    //구글 로그인
+    #region 구글 로그인 관련 메소드
     public void SignInWithGoogle() //로그인 버튼에 등록 
     {
         Debug.Log("구글 로그인 시도");
@@ -38,7 +40,7 @@ public class FirebaseLogin : MonoBehaviour
         GoogleSignIn.DefaultInstance.SignIn().ContinueWith(OnAuthenticationFinished);
     }
 
-    //파이어베이스 로그인
+    //파이어베이스에서 구글 로그인 실패 및 취소
     void OnAuthenticationFinished(Task<GoogleSignInUser> task)
     {
         if (task.IsFaulted)
@@ -59,12 +61,12 @@ public class FirebaseLogin : MonoBehaviour
         }
     }
 
-    //파이어베이스 로그인
+    //파이어베이스에서 구글 로그인 성공
     private void SignInWithGoogleOnFirebase(string idToken)
     {
         Credential credential = GoogleAuthProvider.GetCredential(idToken, null);
 
-        auth.SignInWithCredentialAsync(credential).ContinueWith(task =>
+        auth.SignInWithCredentialAsync(credential).ContinueWithOnMainThread(task =>
         {
             AggregateException ex = task.Exception;
             if (ex != null)
@@ -81,11 +83,14 @@ public class FirebaseLogin : MonoBehaviour
                 //예시 isLoginSuccessful = true;
                 //또는 이벤트 시스템을 이용해서 메인 쓰레드에서 처리하게 할 수도 있음
                 //이벤트 system.TriggerEvent("OnLoginSuccess");
-                //이벤트 리스너가 메인 쓰레드에서 씬전환 처리 
+                //이벤트 리스너가 메인 쓰레드에서 씬전환 처리
+                GameManager.Instance.SetUserLoginStatus(true, LogInType.google);
             }
         });
     }
+    #endregion
 
+    #region 이메일 로그인 관련 메소드
     //가입 버튼에 등록 함수
     public void OnClickedJoin()
     {
@@ -93,7 +98,8 @@ public class FirebaseLogin : MonoBehaviour
         string password = passwordInput.text;
 
         auth.CreateUserWithEmailAndPasswordAsync(email, password)
-                        .ContinueWith(task => {
+                        .ContinueWith(task =>
+                        {
                             if (task.IsCanceled)
                             {
                                 Debug.LogError("가입 취소");
@@ -118,7 +124,8 @@ public class FirebaseLogin : MonoBehaviour
         string password = passwordInput.text;
 
         auth.SignInWithEmailAndPasswordAsync(email, password)
-                        .ContinueWith(task => {
+                        .ContinueWithOnMainThread(task =>
+                        {
                             if (task.IsCanceled)
                             {
                                 Debug.LogError("로그인 취소됌");
@@ -133,7 +140,37 @@ public class FirebaseLogin : MonoBehaviour
                             AuthResult result = task.Result;
                             Debug.LogFormat("로그인 성공 : {0} ({1})",
                                 result.User.DisplayName, result.User.UserId);
+                            GameManager.Instance.SetUserLoginStatus(true, LogInType.email);
                         });
     }
+    #endregion
 
+
+    #region 익명 로그인 관련 메소드
+    public void LoginAnonymously()
+    {
+        auth.SignInAnonymouslyAsync().ContinueWithOnMainThread(task => {
+            if (task.IsCanceled)
+            {
+                Debug.LogError("익명 로그인 취소");
+                return;
+            }
+            if (task.IsFaulted)
+            {
+                Debug.LogError("익명 로그인 실패 : " + task.Exception);
+                return;
+            }
+
+            AuthResult result = task.Result;
+            Debug.LogFormat("익명 로그인 성공 : {0} {1}",
+                result.User.DisplayName, result.User.UserId);
+            GameManager.Instance.SetUserLoginStatus(true, LogInType.annonymous);
+        });
+    }
+    #endregion
+
+    public void Logout()
+    {
+        GameManager.Instance.LogOut();
+    }
 }
