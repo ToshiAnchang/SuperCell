@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
             // [중요] 여기서 auth를 초기화해야 합니다!
             auth = FirebaseAuth.DefaultInstance;
 
-            // 인증 상태 변경 이벤트 연결
+            // 인증 상태 변경 이벤트 함수 등록
             auth.StateChanged += OnAuthStateChanged;
         }
         else
@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Firebase 인증 상태가 변경될 때 호출되는 콜백 함수
+    // Firebase 인증 상태가 변경될 때 호출되는 콜백 함수, GameManager Awake()에서 콜백함수 등록하였음
     void OnAuthStateChanged(object sender, System.EventArgs eventArgs)
     {
         if (auth.CurrentUser == null)
