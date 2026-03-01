@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
     {
         if(isLogin)
         {
-            SceneManager.LoadScene("StartScene");
+            SceneManager.LoadScene("2.StartScene");
             Debug.Log("로그인 성공! 씬 전환 처리");
             isLogin = false; // 로그인 플래그 초기화
         }
@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
             isLogin = false;
             logInType = LogInType.none;
             Debug.Log("Firebase로부터 확인됨: 로그아웃 완료");
-            SceneManager.LoadScene("LoginScene"); // 로그아웃 후 로그인 씬으로 이동
+            SceneManager.LoadScene("1.LoginScene"); // 로그아웃 후 로그인 씬으로 이동
         }
         else
         {
