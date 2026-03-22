@@ -8,4 +8,5 @@ public class StageDataSO : ScriptableObject
     public float firstEnemyHP;
     public float hpIncreasePerEnemy;
     public GameObject enemyPrefab; // 이 스테이지에서 스폰할 에너미 프리팹
+    public GameObject enemyHeadPrefab;
 }

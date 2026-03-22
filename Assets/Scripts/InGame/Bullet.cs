@@ -3,7 +3,7 @@
 public class Bullet : MonoBehaviour
 {
     public float speed = 20f;
-    public float damage = 10f;
+    public float damage = 100f;
 
     void Update()
     {
@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
         Enemy enemy = other.GetComponent<Enemy>();
         if (enemy != null)
         {
-            Debug.Log($"Bullet hit enemy with {enemy.currentHealth} HP");
+            Debug.Log($"Bullet hit enemy with {enemy.GetEnemyGroup().currentHp} HP");
             enemy.TakeDamage(damage);
             Destroy(gameObject);
         }

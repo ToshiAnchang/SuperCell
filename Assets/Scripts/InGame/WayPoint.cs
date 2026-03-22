@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WayPoint : MonoBehaviour
 {
+    public bool isStopPoint = false; // 적이 멈춰야 하는 지점인지 여부
+
     void Start()
     {
         //하위 오브젝트 SetAcive(false)

@@ -17,6 +17,16 @@ public class EnemyController : MonoBehaviour
     private bool isFillingGap = false;
     private float totalPathLength = 0f;
 
+    private static EnemyController instance;
+    public static EnemyController Instance { get {
+        if (instance == null)
+        {
+            instance = FindObjectOfType<EnemyController>();
+        }
+        return instance;
+    }
+    }
+
     void Awake()
     {
         SortWayPoints();
@@ -41,18 +51,6 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            OnEnemyDeath(enemyList[5]);
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            OnEnemyDeath(enemyList[10]);
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            OnEnemyDeath(enemyList[20]);
-        }
         if (enemyList.Count == 0) return;
 
         if (isFillingGap)
@@ -76,7 +74,11 @@ public class EnemyController : MonoBehaviour
         {
             e.UpdateUnit(GetPositionOnPath(e.currentDistance),
                          GetPositionOnPath(e.currentDistance + 0.1f), step);
-        }
+            if (e.currentDistance >= totalPathLength)
+            {
+                Debug.Log("EnemyController.cs : 적이 경로 끝에 도달했습니다.");             
+            }
+        }        
     }
 
     void CheckGapFilled()

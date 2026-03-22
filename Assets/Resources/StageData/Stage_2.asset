@@ -18,3 +18,5 @@ MonoBehaviour:
   hpIncreasePerEnemy: 100
   enemyPrefab: {fileID: 8702384526973583315, guid: 3e8a10ca7a430774abea8fbc8bd4523f,
     type: 3}
+  enemyHeadPrefab: {fileID: 10243310132104263, guid: f26028f294cf88a4c8ea60f07f4a729d,
+    type: 3}

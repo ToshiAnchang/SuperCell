@@ -2,6 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHead : EnemyBody
+public class EnemyHead : Enemy
 {
 }
