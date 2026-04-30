@@ -361,8 +361,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 91247b78117d5d14381fa6feff142c7f, type: 2}
+  m_sharedMaterial: {fileID: 6444605775657549434, guid: 91247b78117d5d14381fa6feff142c7f,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1021,8 +1022,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Enter text...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 91247b78117d5d14381fa6feff142c7f, type: 2}
+  m_sharedMaterial: {fileID: 6444605775657549434, guid: 91247b78117d5d14381fa6feff142c7f,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1351,38 +1353,6 @@ PrefabInstance:
     - target: {fileID: 2057917142109556884, guid: e00b05f543fad9b47b4328d2b33472f9,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3945166564254813802, guid: e00b05f543fad9b47b4328d2b33472f9,
-        type: 3}
-      propertyPath: m_text
-      value: "\uC11C\uC6B8\uC758\uD55C\uC6B0\uB97C \uBE44\uBE54\uBC25\uC744 \uD574\uC11C "
-      objectReference: {fileID: 0}
-    - target: {fileID: 3945166564254813802, guid: e00b05f543fad9b47b4328d2b33472f9,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: 3945166564254813802, guid: e00b05f543fad9b47b4328d2b33472f9,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 91247b78117d5d14381fa6feff142c7f,
-        type: 2}
-    - target: {fileID: 3945166564254813802, guid: e00b05f543fad9b47b4328d2b33472f9,
-        type: 3}
-      propertyPath: m_fontSizeBase
-      value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: 3945166564254813802, guid: e00b05f543fad9b47b4328d2b33472f9,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 6444605775657549434, guid: 91247b78117d5d14381fa6feff142c7f,
-        type: 2}
-    - target: {fileID: 3945166564254813802, guid: e00b05f543fad9b47b4328d2b33472f9,
-        type: 3}
-      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8512540520119173641, guid: e00b05f543fad9b47b4328d2b33472f9,
